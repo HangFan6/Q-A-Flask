@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ajax js 的实现</title>
+</head>
+<body>
+<p>ajax js 的实现</p>
+<script>
+  // 1. 创建XMLHttpRequest对象
+  var xmlhttp = null;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+  } else {
+    alert('浏览器不支持')
+  }
+  // 2. 注册回调函数
+  if (xmlhttp !== null) {
+    xmlhttp.onreadystatechange = callback;
+  }
+
+  // 3. 配置请求参数
+  var url = 'http://127.0.0.1:8001/ajax/js'
+  // 4. 发送请求
+  xmlhttp.open('POST', url, true);
+  // 发送请求
+  xmlhttp.send(null);
+
+
+  // 5. 回调处理
+  function callback() {
+    if (xmlhttp.readyState === 4) {
+      // http状态码
+      console.log(xmlhttp.status)
+    }
+  }
+
+  // 跨域错误  同源策略：协议 地址 端口
+
+</script>
+</body>
+</html>

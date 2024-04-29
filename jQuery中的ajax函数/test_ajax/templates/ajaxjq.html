@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery 中使用 ajax</title>
+  <script src="/static/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<p>jquery 中使用 ajax</p>
+<a href="javascript:;">点击提交</a>
+<script>
+  $(document).ready(function () {
+    $('a').click(function () {
+      $.ajax({
+        url: 'http://127.0.0.1:8001/ajax/js',
+        // 请求方式：POST、GET
+        method: 'POST',
+        // 请求参数
+        data: {
+          username: 'zhangsan',
+          password: '123123'
+        },
+        /**
+         success: function (res) {
+              console.log(res)
+              alert('成功了')
+            },
+         error: function () {
+                alert('出错了')
+            },
+         **/
+        complete: function () {
+          alert('请求完成了')
+        }
+      })
+    })
+  })
+</script>
+</body>
+</html>
